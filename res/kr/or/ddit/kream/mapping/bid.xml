@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap
+	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+	
+	<sqlMap namespace = "bid">
+	 
+	 <!-- '판매하기'에서 상품별 사이즈, 가격 가져오기 -->
+	 <select id="sellInfo" resultClass="bidvo" parameterClass="String">
+	 
+		select max(a.bid_price) as bid_price, b.size_name
+	    from bid a, prod_size b
+	   where a.SIZE_ID=b.SIZE_ID
+	    and a.BID_POSITION ='buyer'
+	    and b.prod_ID=#prod_id#
+	    group by b.size_name
+	 
+	 </select>
+	
+	
+	
+	
+	
+	</sqlMap>
