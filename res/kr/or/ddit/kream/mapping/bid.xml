@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?> 
 
 <!DOCTYPE sqlMap
 	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
@@ -7,17 +7,35 @@
 	<sqlMap namespace = "bid">
 	 
 	 <!-- '판매하기'에서 상품별 사이즈, 가격 가져오기 -->
-	 <select id="sellInfo" resultClass="bidvo" parameterClass="String">
+	 <select id="sellInfo" resultClass="bidvo" parameterClass="string">
 	 
-		select max(a.bid_price) as bid_price, b.size_name
-	    from bid a, prod_size b
-	   where a.SIZE_ID=b.SIZE_ID
-	    and a.BID_POSITION ='buyer'
-	    and b.prod_ID=#prod_id#
-	    group by b.size_name
-	 
+	  select a.size_name, nvl(tb.price,0) as bid_price
+     from prod_size a, (select min(bid_price) as price ,c.size_ID as cid
+                         from bid b, PROD_SIZE c
+                         where  b.BID_POSITION ='seller'
+                           and b.SIZE_ID=c.SIZE_ID
+                         group by c.size_ID) tb
+   where a.size_ID=tb.cid(+)
+    and a.PROD_ID=#prod_id#
+   order by 1
 	 </select>
 	
+
+     <!-- '구매하기'에서 상품별 사이즈, 가격 가져오기 -->
+	 <select id="buyInfo" resultClass="bidvo" parameterClass="string">
+	 
+	  select a.size_name, nvl(tb.price,0)
+     from prod_size a, (select min(bid_price) as price ,c.size_ID as cid
+                         from bid b, PROD_SIZE c
+                         where  b.BID_POSITION ='seller'
+                           and b.SIZE_ID=c.SIZE_ID
+                         group by c.size_ID) tb
+   where a.size_ID=tb.cid(+)
+    and a.PROD_ID=#prod_id#
+   order by 1
+	 </select>
+
+
 	
 	
 	

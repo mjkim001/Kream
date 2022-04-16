@@ -22,7 +22,10 @@
 	 <typeAlias alias = "boardQnAVo" type = "kr.or.ddit.kream.vo.BoardQnAVo"/>
 	 <typeAlias alias = "memberVo" type = "kr.or.ddit.kream.vo.MemberVO"/>
 	 <typeAlias alias = "bidVo" type = "kr.or.ddit.kream.vo.BidVo"/>
-							
+	 <typeAlias alias = "mainpageprodVo" type = "kr.or.ddit.kream.vo.MainPageProdVo"/>
+	 <typeAlias alias = "prodDetailVo" type="kr.or.ddit.kream.vo.ProdDetailVo"/>	
+	 <typeAlias alias = "lprodVo" type = "kr.or.ddit.kream.vo.LprodVo"/>
+	 	 						
 	<!-- DB와의 연결을 처리하는 부분 -->
 	 <!-- db.properties파일 이용하기 -->
 	<transactionManager type="JDBC">
@@ -44,9 +47,10 @@
 		
 <!-- 	    <sqlMap resource="kr/or/ddit/kream/mapping/prod.xml"/> -->
 <!-- 		<sqlMap resource="kr/or/ddit/kream/mapping/card.xml"/> -->
-<!-- 		<sqlMap resource="kr/or/ddit/kream/mapping/boardQnA.xml"/>  -->
 <!-- 		<sqlMap resource="kr/or/ddit/kream/mapping/member.xml"/> -->
 		<sqlMap resource="kr/or/ddit/kream/mapping/adminBoard.xml"/>
 <!-- 	    <sqlMap resource="kr/or/ddit/kream/mapping/bid.xml"/> -->
+<!-- 	    <sqlMap resource="kr/or/ddit/kream/mapping/order.xml"/> -->
+	    
 </sqlMapConfig>
 

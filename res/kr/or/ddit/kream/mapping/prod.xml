@@ -8,9 +8,9 @@
 		
 	<select id = "prodlist" resultClass = "mainpageprodVo">
 		select a.prod_id, a.prod_name, b.brand_name, c.photo_path
-		from prod a, brand b, photo c
-		where a.prod_id = c.prod_id
-		and a.brand_id = b.brand_id
+		  from prod a, brand b, photo c
+		 where a.prod_id = c.prod_id
+		   and a.brand_id = b.brand_id
 	</select>
 	
 	<select id = "lprodlist" resultClass = "lprodVo">
@@ -23,7 +23,7 @@
 		      a.prod_resell,
 		      a.org_price,
 		      b.photo_path,
-		      c.brand_name,
+		      c.brand_name
 		  from prod a, photo b, brand c
 		  where a.prod_id = b.prod_id
 		    and a.brand_id = c.brand_id
