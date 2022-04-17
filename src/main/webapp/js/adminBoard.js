@@ -2,6 +2,23 @@
  * 
  */
  
+ 
+ var adminlist = function(){
+	$.ajax({
+		url : '/Kream/AdminBoard.do',
+	    type : 'post',
+	    data :{
+			
+	    },
+	    success : function(res){
+	    },
+	    error : function(xhr){
+		   alert("상태 : " + xhr.status);
+	    },
+	    dataType : 'json'
+	})
+ }
+ 
  var memberList = function(){
 	$.ajax({
 		url : '/Kream/AdminBoard.do',
