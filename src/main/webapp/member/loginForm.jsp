@@ -60,11 +60,11 @@ li{
 <div class="top_line fixed-top border-bottom text-end" style="height: 50px; display: flex; line-height: 50px; padding-right: 20px; background: white;">
 	<ul class = "text-end" style="margin-left: auto;">
 		<li><a href="#">고객센터</a></li>
-		<li><a href="#">마이페이지</a></li>
+		<li><a href="<%= request.getContextPath() %>/MyPage.do">마이페이지</a></li>
 		<li><a href="<%= request.getContextPath() %>/member/loginForm.jsp">로그인</a></li>
 	</ul>
 </div>
-
+<!-- 로그인은 쿠키로 -->
 
 <div class="content md">
 	<div class="login_area">

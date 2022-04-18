@@ -15,45 +15,14 @@ public class BidVo {
 	private String size_name;     //prod_size 테이블의 치수
 	
 	// 혜지 추가 
-	private String TEMP_PRICE;  // 응찰 가격 
-	private String TEMP_DATE;   // 응찰 일자 
-	private String BID_STATE;   // 입찰 상태 
-	private String POINT_YN;    // 포인트 사용 여부 
-	private int POINT;          // 사용할 포인트 금액
+	private String Temp_price;  // 응찰 가격 
+	private String Temp_date;   // 응찰 일자 
+	private String Bid_state;   // 입찰 상태 
+	private String Point_yn;    // 포인트 사용 여부 
+	private int point;          // 사용할 포인트 금액
 	
-	
-	
-	
-	public String getTEMP_PRICE() {
-		return TEMP_PRICE;
-	}
-	public void setTEMP_PRICE(String tEMP_PRICE) {
-		TEMP_PRICE = tEMP_PRICE;
-	}
-	public String getTEMP_DATE() {
-		return TEMP_DATE;
-	}
-	public void setTEMP_DATE(String tEMP_DATE) {
-		TEMP_DATE = tEMP_DATE;
-	}
-	public String getBID_STATE() {
-		return BID_STATE;
-	}
-	public void setBID_STATE(String bID_STATE) {
-		BID_STATE = bID_STATE;
-	}
-	public String getPOINT_YN() {
-		return POINT_YN;
-	}
-	public void setPOINT_YN(String pOINT_YN) {
-		POINT_YN = pOINT_YN;
-	}
-	public int getPOINT() {
-		return POINT;
-	}
-	public void setPOINT(int pOINT) {
-		POINT = pOINT;
-	}
+	private int order_price; // 최종결제가격 
+
 	public String getSize_name() {
 		return size_name;
 	}
@@ -101,6 +70,42 @@ public class BidVo {
 	}
 	public void setSize_id(String size_id) {
 		this.size_id = size_id;
+	}
+	public String getTemp_price() {
+		return Temp_price;
+	}
+	public void setTemp_price(String temp_price) {
+		Temp_price = temp_price;
+	}
+	public String getTemp_date() {
+		return Temp_date;
+	}
+	public void setTemp_date(String temp_date) {
+		Temp_date = temp_date;
+	}
+	public String getBid_state() {
+		return Bid_state;
+	}
+	public void setBid_state(String bid_state) {
+		Bid_state = bid_state;
+	}
+	public String getPoint_yn() {
+		return Point_yn;
+	}
+	public void setPoint_yn(String point_yn) {
+		Point_yn = point_yn;
+	}
+	public int getPoint() {
+		return point;
+	}
+	public void setPoint(int point) {
+		this.point = point;
+	}
+	public int getOrder_price() {
+		return order_price;
+	}
+	public void setOrder_price(int order_price) {
+		this.order_price = order_price;
 	}
 	
 	

@@ -11,8 +11,10 @@
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
   <script src="../js/adminBoard.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script type="text/javascript">
 currentPage = 1;
+admin={};
 $(function() {
 	typevalue = "";
 	wordvalue = "";
@@ -41,46 +43,79 @@ $(function() {
 		currentPage = 
 			parseInt($('.pager a').first().text()) - 1;
 		
-		listServer();
+		memberList();
 	})
 	//다음버튼 클릭하는 이벤트
 	$('#pagelist').on('click', '.next', function(){
 		currentPage =
 			parseInt( $('.pager a').last().text()) + 1;
 		
-		listServer();
+		memberList();
 	})
 	
-	$('.container').on('click', '.action', function(){
+	$('.modal-footer').on('click', '.action', function(){
 		actionName =  $(this).attr('name');
 		actionIdx  = $(this).attr('idx');
 		
-		if(actionName == "modify"){
-			alert(actionIdx + "번 글을 수정합니다");
+		
+		//관리자 계정 추가
+		if(actionName == "insert"){
+						
+			//mem_mail, mem_pass, mem_name
 			
-			//수정 창을 띄위기 - 수정할 (원래) 내용들을 출력
-			bcard = $(this).parents('.card');
-			subject = bcard.find('a').text();
-			writer = bcard.find('.bwr').text();
-			mail = bcard.find('.bma').text();
-			cont = bcard.find('.p3').html();
+			mem_email = $('#imem_email').val(); //관리자 아이디
+			mem_pass = $('#imem_pass').val(); //관리자 비밀번호
+			mem_name = $('#imem_name').val(); //관리자 이름
 			
+			admin.mem_email = mem_email;
+			admin.mem_pass = mem_pass;
+			admin.mem_name = mem_name;
 			
-			cont = cont.replace(/<br>/g, "\n");
-			$('#modiModal #writer').val(writer);
-			$('#modiModal #subject').val(subject);
-			$('#modiModal #mail').val(mail);
-			$('#modiModal #content').val(cont);
-			$('#modiModal #num').val(actionIdx);
+			adminInsert(this);
 			
-			$('#modiModal #add').prop('disabled', true)
+		}else if(actionName=="update"){
 			
+			//mem_email = $('#mem_email').val(); 
+			mem_pass = $('#umem_pass').val(); //관리자 비밀번호
+			mem_name = $('#umem_name').val(); //관리자 이름
+			
+			admin.mem_email = mem_email;
+			admin.mem_pass = mem_pass;
+			admin.mem_name = mem_name;
+			
+			adminUpdate(this);
 		}
 		
 		
+	})
+	
+	
+	$('#update').on('click', function(){
+		console.log($("input:radio[name='member']:checked"));
+		if(!$("input:radio[name='member']:checked").length>0){
+			alert("계정을 선택해 주세요");
+			return false;
+			//$('#updateModal').modal('hide');
+		}else {
+			mem_email = $("input:radio[name='member']:checked").parents('tr').find('.dmem_email').attr('name');//관리자 아이디
+			$('#umem_email').val(mem_email);
+		}
+	})
+	
+	$('#delete').on('click', function(){
 		
-		
-	}
+ 		if(!$("input:radio[name='member']:checked").length>0){
+ 			alert("계정을 선택해 주세요");
+ 			return false;
+ 			//$('#updatemodal').modal('hide');
+ 		}else {
+			
+ 			mem_email = $("input:radio[name='member']:checked").parents('tr').find('.dmem_email').attr('name');//관리자 아이디
+			
+ 			alert(mem_email+" 삭제되었습니다.");
+ 			adminDelete(mem_email);
+ 		} 
+	})
 	
 })
 </script>
@@ -132,11 +167,17 @@ table{
 }
 
 /*moadal*/
-#modiModal{
+.modal{
 	padding-left: 450px;
 }
-#lsize{
+.lsize{
 	/*글씨 맞춤 style*/
+	display: inline-block;
+	width: 100px;
+}
+
+#btnsearch{
+	border-radius:20%;
 }
 
 </style>
@@ -157,9 +198,9 @@ table{
 	  </form>
 	  
 	  <form id="btns">
-	  	<button id="add" type="button" data-toggle="modal" data-target="#modiModal" class="btn btn-outline-light text-dark">계정추가</button>
-	  	<button id="modify" type="button" data-toggle="modal" data-target="#modiModal" class="btn btn-outline-light text-dark">계정수정</button>
-	  	<button id="delete" type="button" data-toggle="modal" data-target="#modiModal" class="btn btn-outline-light text-dark">계정삭제</button>
+	  	<button id="insert" name="insert" type="button" data-toggle="modal" data-target="#insertModal" class="action btn btn-outline-dark">계정추가</button>
+	  	<button id="update" name="update" type="button" data-toggle="modal" data-target="#updateModal" class="action btn btn-outline-dark">계정수정</button>
+	  	<button id="delete" name="delete" type="button" class="btn btn-outline-dark">계정삭제</button>
 	  </form>
   </nav>
   <br><br>
@@ -175,8 +216,8 @@ table{
  </div>
  
  
- <!-- The Modal -->
-<div class="modal" id="modiModal">
+ <!-- The Modal //관리자 계정 추가-->
+<div class="modal" id="insertModal">
   <div class="modal-dialog">
     <div class="modal-content">
 
@@ -188,29 +229,62 @@ table{
 
       <!-- Modal body -->
       <div class="modal-body">
-        <form id="modiForm">
+        <form id="imodiForm">
         <!-- vo와 name이 동일해야한다. -->
         	<label class="lsize">아이디</label>
-        	<input type="text" id="mem_mail" name="mem_mail"><br>
+        	<input type="text" id="imem_email" name="mem_email"><br>
         	
         	<label class="lsize">비밀번호</label>
-        	<input type="text" id="mem_pass" name="mem_pass"><br>
+        	<input type="text" id="imem_pass" name="mem_pass"><br>
         	
         	<label class="lsize">이름</label>
-        	<input type="text" id="mem_name" name="mem_name"><br>
-        	
-        	<input type="button"  id="modisend"value="전송"> <!-- class="action" name="modisend" idx="" -->
+        	<input type="text" id="imem_name" name="mem_name"><br>
         </form>
       </div>
-
+      
       <!-- Modal footer -->
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      <input type="button" name="insert" class="btn btn-primary action"  value="확인"> <!-- class="action" name="modisend" idx="" -->
+        <button type="button" name="close" class="btn btn-danger action" data-dismiss="modal">Close</button>
       </div>
 
     </div>
   </div>
 </div>
- 
-</body>
-</html>
+
+<!-- The Modal //관리자 계정 수정-->
+<div class="modal" id="updateModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">관리자 계정 수정</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <form id="umodiForm">
+        <!-- vo와 name이 동일해야한다. -->
+        	<label class="lsize">아이디</label>
+        	<input disabled type="text" id="umem_email" name="mem_email"><br>
+        	
+        	<label class="lsize">비밀번호</label>
+        	<input type="text" id="umem_pass" name="mem_pass"><br>
+        	
+        	<label class="lsize">이름</label>
+        	<input type="text" id="umem_name" name="mem_name"><br>
+        </form>
+      </div>
+      
+      <!-- Modal footer -->
+      <div class="modal-footer">
+      <input type="button" name="update" class="btn btn-primary action"  id="umodisend"value="확인"> <!-- class="action" name="modisend" idx="" -->
+        <button type="button" name="close" class="btn btn-danger action" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+

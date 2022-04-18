@@ -24,9 +24,9 @@
 	
 	<select id="pointchk" parameterClass="string" resultClass="bidVo">
 	<!-- 포인트 사용여부 -->
-		  SELECT POINT_YN, POINT
-    	    FROM BID
-           WHERE BID_ID = #BID_ID#
+		  select point_yn, point
+    	    from bid
+           where bid_id = #bid_id#
 	</select>
 	
 	<insert id="insertBidTemp" parameterClass="bidVo">
@@ -34,7 +34,7 @@
 		 구매입찰코드, 판매자아이디 , 판매입찰가격, 응찰된 날짜  
 	-->
 		insert into bid_temp(bid_id,mem_email,temp_price,temp_date)
-	     values(#bid_id#, #mem_email#, #temp_price# , sysdate)
+	     values(#bid_id#, #mem_email#, #bid_price# , sysdate)
 	</insert>
 	
 	<update id="updateBidState" parameterClass="map">
@@ -79,11 +79,28 @@
 		 구매입찰의 경우 bid_id : 판매입찰건의 bid_id 
 		 mem_email : 판매자의 이메일 
 	 -->
-		UPDATE MEMBER 
-  		   SET MEM_POINT = MEM_POINT + (  SELECT BID_PRICE 
-                       						FROM BID
-                      					   WHERE  BID_ID = #BID_ID#)
-  		 WHERE MEM_EMAIL = #MEM_EMAIL#
+		update member 
+  		   set mem_point = mem_point + (  select bid_price 
+                       						from bid
+                      					   where  bid_id = #bid_id#)
+  		 where mem_email = #mem_email#
 	</update>
 	
+	<select id="selectProd" parameterClass="string" resultClass="prodDetailVo">
+		 select a.prod_name,
+		        b.photo_path,
+		        c.brand_name,
+                d.size_name
+		  from prod a, photo b, brand c ,prod_size d
+		  where a.prod_id = b.prod_id
+		    and a.brand_id = c.brand_id
+            and a.prod_id = d.prod_id
+		    and d.size_id = #size_id#
+	</select>
+	
+	<select id="getPoint" parameterClass="string" resultClass="string">
+		select mem_point 
+		  from member
+		 where mem_email = #mem_email#
+	</select>
 </sqlMap>

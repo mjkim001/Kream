@@ -1,10 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+  
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
 <style type="text/css">
 /*nav, iframe 전체 크기 조정*/
 #board{
@@ -52,6 +55,14 @@ header h1{
 }
 
 </style>
+<script type="text/javascript">
+$(function() {
+	$('span').on('click', function() {
+		alert('클릭')
+		$('iframe').attr('src', $(this).attr('id'))
+	})
+})
+</script>
 </head>
 <body>
 <!-- 이후 header추가 -->
@@ -62,10 +73,10 @@ header h1{
 	<div id="leftnav">
 		<h1>관리</h1>
 		<ul>
-			<li>회원관리</li><hr>
-			<li>공지사항</li><hr>
-			<li>Q&A</li><hr>
-			<li>물품등록</li><hr>
+			<li><span id="./memberManagement.jsp">회원관리</span></li><hr>
+			<li><span id="./noticeList.jsp">공지사항</span></li><hr>
+			<li><span id="./qnaList.jsp">Q&A</span></li><hr>
+			<li><span id="./memberManagement.jsp">물품등록</span></li><hr>
 		</ul>
 	</div>
 

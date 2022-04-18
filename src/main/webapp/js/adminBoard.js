@@ -1,24 +1,57 @@
 /**
  * 
  */
- 
- 
- var adminlist = function(){
+ var adminDelete= function(target){
 	$.ajax({
-		url : '/Kream/AdminBoard.do',
+		url :'/Kream/AdminDelete.do',
+		type : 'get',
+		data : {
+			"mem_email" : target
+		},
+		success : function(res){
+			memberList();
+		},
+		error : function(xhr){
+			alert("상태 : " + xhr.status);
+		},
+		dataType : 'json'
+		
+	})
+}
+ 
+ var adminUpdate = function(){
+	$.ajax({
+		url : '/Kream/AdminUpdate.do',
 	    type : 'post',
-	    data :{
-			
-	    },
+	    data :admin, //admin객체 - mem_email, mem_pass, mem_name
 	    success : function(res){
+			memberList();
 	    },
 	    error : function(xhr){
 		   alert("상태 : " + xhr.status);
 	    },
 	    dataType : 'json'
 	})
+}
+ 
+ //관리자 계정을 추가할 수 있다.
+ var adminInsert = function(target){
+	$.ajax({
+		url : '/Kream/AdminInsert.do',
+	    type : 'post',
+	    data :admin, //admin객체 - mem_email, mem_pass, mem_name
+	    success : function(res){
+			memberList();
+	    },
+	    error : function(xhr){
+			alert("이미 아이디가 존재합니다. 다시 입력해주세요");
+		    alert("상태 : " + xhr.status);
+	    },
+	    dataType : 'json'
+	})
  }
  
+ //회원 정보 리스트 모든 회원의 정보를 조회할 수 있다.
  var memberList = function(){
 	$.ajax({
 		url : '/Kream/AdminBoard.do',
@@ -59,7 +92,7 @@
 					v.authority = "관리자";
 				}
 				
-				code += "<tr><td>"+v.mem_email+"</td>";
+				code += "<tr><td class='dmem_email' name = '"+v.mem_email+"'>"+v.mem_email+"</td>";
 				code += "<td>"+v.mem_pass+"</td>";
 				code += "<td>"+v.mem_name+"</td>";
 				code += "<td>"+v.mem_bir+"</td>";
@@ -67,7 +100,12 @@
 				code += "<td>"+v.mem_acc+"</td>";
 				code += "<td>"+v.mem_bank+"</td>";
 				code += "<td>"+v.mem_alias+"</td>";
-				code += "<td>"+v.authority+"</td></tr>";
+				
+				if(v.authority == "관리자"){
+					code += "<td>"+v.authority+"<input style ='margin-left:25px;' name='member' type='radio' style='margin-right:10px;' value='"+v.authority+"'></td></tr>";
+				}else{
+					code += "<td class='admin' value='"+v.authority+"'>"+v.authority+"</td></tr>";
+				}
 				
 			})
 			code+="</table>";

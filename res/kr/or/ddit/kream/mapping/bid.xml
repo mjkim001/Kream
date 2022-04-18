@@ -9,10 +9,10 @@
 	 <!-- '판매하기'에서 상품별 사이즈, 가격 가져오기 -->
 	 <select id="sellInfo" resultClass="bidvo" parameterClass="string">
 	 
-	  select a.size_name, nvl(tb.price,0) as bid_price
-     from prod_size a, (select min(bid_price) as price ,c.size_ID as cid
+	  select a.size_name, nvl(tb.price,0) as bid_price ,a.size_id
+     from prod_size a, (select max(bid_price) as price ,c.size_ID as cid
                          from bid b, PROD_SIZE c
-                         where  b.BID_POSITION ='seller'
+                         where  b.BID_POSITION ='buyer'
                            and b.SIZE_ID=c.SIZE_ID
                          group by c.size_ID) tb
    where a.size_ID=tb.cid(+)
@@ -24,7 +24,7 @@
      <!-- '구매하기'에서 상품별 사이즈, 가격 가져오기 -->
 	 <select id="buyInfo" resultClass="bidvo" parameterClass="string">
 	 
-	  select a.size_name, nvl(tb.price,0)
+	  select a.size_name, nvl(tb.price,0) as bid_price ,a.size_id
      from prod_size a, (select min(bid_price) as price ,c.size_ID as cid
                          from bid b, PROD_SIZE c
                          where  b.BID_POSITION ='seller'

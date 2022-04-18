@@ -44,7 +44,7 @@ public class Login extends HttpServlet {
 			System.out.println("맴버가 널값이야!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		}
 		
-		response.sendRedirect("/Kream/member/main.jsp");
+		response.sendRedirect("/Kream/prodview/prodList.jsp");
 	}
 
 }

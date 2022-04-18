@@ -1,6 +1,8 @@
 package kr.or.ddit.kream.member.service;
 
 import java.sql.SQLException;
+import java.util.List;
+import java.util.Map;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
 
@@ -8,6 +10,7 @@ import kr.or.ddit.kream.member.dao.IMemberDao;
 import kr.or.ddit.kream.member.dao.MemberDaoImpl;
 import kr.or.ddit.kream.util.SqlMapClientFactory;
 import kr.or.ddit.kream.vo.MemberVO;
+import kr.or.ddit.kream.vo.MyBuyingListVO;
 
 public class MemberServiceImpl implements IMemberService {
 	private static IMemberService service;
@@ -48,6 +51,34 @@ public class MemberServiceImpl implements IMemberService {
 			e.printStackTrace();
 		}
 		return vo;
+	}
+
+	@Override
+	public List<MyBuyingListVO> getBidList(Map<String, String> paramap) {
+		List<MyBuyingListVO> list = null;
+		try {
+			list = dao.getBidList(smc, paramap);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			list = null;
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	@Override
+	public Map<String, Integer> getBuySellCount(String mem_email) {
+		Map<String, Integer> map = null;
+		
+		try {
+			map = dao.getBuySellCount(smc, mem_email);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			map = null;
+			e.printStackTrace();
+		}
+		
+		return map;
 	}
 
 }
