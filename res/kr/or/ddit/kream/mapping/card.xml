@@ -20,14 +20,10 @@
         ,#customer_uid# 
         )
 </insert>
-<select id="selectCard" parameterClass="string" resultClass="cardVo">
+<select id="selectCard" parameterClass="string" resultClass="string">
 	 	select A.card_number  
-              ,A.expiry      
-              ,A.birth        
-              ,A.pwd_2digit  
-              ,A.customer_uid  
          from card_data A, member B 
-         where B.mem_id = #memid#;
+         where B.mem_email=#memid#
 </select>
 
 </sqlMap>	

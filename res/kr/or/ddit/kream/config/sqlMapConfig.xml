@@ -30,6 +30,7 @@
 	 <typeAlias alias = "likeprodVo" type = "kr.or.ddit.kream.vo.LikeProdVo"/>
 	 <typeAlias alias = "graphVo" type = "kr.or.ddit.kream.vo.GraphVo"/>
 	 <typeAlias alias = "noticeVo" type = "kr.or.ddit.kream.vo.NoticeVo"/>
+	 <typeAlias alias = "brandVo" type = "kr.or.ddit.kream.vo.BrandVo"/>
 	 
 	 	 						
 	<!-- DB와의 연결을 처리하는 부분 -->

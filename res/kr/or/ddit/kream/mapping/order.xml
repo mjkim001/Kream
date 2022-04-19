@@ -22,9 +22,9 @@
   	   where rownum = 1
 	</select>
 	
-	<select id="pointchk" parameterClass="string" resultClass="bidVo">
+	<select id="pointchk" parameterClass="string" resultClass="int">
 	<!-- 포인트 사용여부 -->
-		  select point_yn, point
+		  select point
     	    from bid
            where bid_id = #bid_id#
 	</select>
