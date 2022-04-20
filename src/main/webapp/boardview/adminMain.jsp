@@ -58,7 +58,6 @@ header h1{
 <script type="text/javascript">
 $(function() {
 	$('span').on('click', function() {
-		alert('클릭')
 		$('iframe').attr('src', $(this).attr('id'))
 	})
 })

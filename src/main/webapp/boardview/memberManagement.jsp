@@ -60,7 +60,6 @@ $(function() {
 		
 		//관리자 계정 추가
 		if(actionName == "insert"){
-						
 			//mem_mail, mem_pass, mem_name
 			
 			mem_email = $('#imem_email').val(); //관리자 아이디
@@ -244,7 +243,7 @@ table{
       
       <!-- Modal footer -->
       <div class="modal-footer">
-      <input type="button" name="insert" class="btn btn-primary action"  value="확인"> <!-- class="action" name="modisend" idx="" -->
+      <input type="button" name="insert" class="btn btn-primary action"  value="확인" data-dismiss="modal"> <!-- class="action" name="modisend" idx="" -->
         <button type="button" name="close" class="btn btn-danger action" data-dismiss="modal">Close</button>
       </div>
 
@@ -280,7 +279,7 @@ table{
       
       <!-- Modal footer -->
       <div class="modal-footer">
-      <input type="button" name="update" class="btn btn-primary action"  id="umodisend"value="확인"> <!-- class="action" name="modisend" idx="" -->
+      <input type="button" name="update" class="btn btn-primary action"  id="umodisend"value="확인" data-dismiss="modal"> <!-- class="action" name="modisend" idx="" -->
         <button type="button" name="close" class="btn btn-danger action" data-dismiss="modal">Close</button>
       </div>
 
