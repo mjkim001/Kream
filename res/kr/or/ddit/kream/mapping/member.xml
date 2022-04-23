@@ -6,14 +6,16 @@
 	
 <sqlMap namespace="member">
 	<insert id="insertMember" parameterClass="memberVo">
-		insert into member(mem_email,mem_pass,mem_name,mem_addr)
-		values(#mem_email#,#mem_pass#,#mem_name#,#mem_addr#)
+		insert into member(mem_email,mem_pass,mem_name,mem_sns)
+		values(#mem_email#,#mem_pass#,#mem_name#,#mem_sns#)
 	</insert>
 	
 	<select id="getMember" parameterClass='memberVo' resultClass="memberVo">
 		select * from member
 		where mem_email = #mem_email#
-        and mem_pass = #mem_pass#
+		<isNotNull prepend="AND" property="mem_pass">
+	        mem_pass = #mem_pass#
+		</isNotNull>
 	</select>
 	
 	<select id="getBidList" parameterClass="map" resultClass="myBuyingListVo">
@@ -86,6 +88,38 @@
 		   AND A.BRAND_ID = B.BRAND_ID
 		   AND A.PROD_ID = D.PROD_ID
 	
+	</select>
+	
+	<select id="addrcount" parameterClass="string" resultClass="string">
+		SELECT to_char(COUNT(*)) as addrcount
+          FROM ADDRESS
+         WHERE MEM_EMAIL = #data#
+	</select>
+	
+	<update id="updateaddr" parameterClass="addressVo">
+		update address set
+			name = #name#,
+			addr1 = #addr1#,
+			phone_num = #phone_num#,
+			zip_code = #zip_code#,
+			addr2 = #addr2#
+			where mem_email = #mem_email#
+	</update>
+	
+	<insert id="insertaddr" parameterClass="string">
+		 insert into address(mem_email)
+ 	       values(#data#) 
+	</insert>
+	
+	<select id="snsCount" parameterClass="string" resultClass="string">
+		SELECT to_char(count(*)) as snscount
+			FROM member
+			where mem_sns = #data#
+	</select>
+	
+	<select id="getSnsMember" parameterClass="string" resultClass="memberVo">
+		select * from member
+		where mem_sns = #data#
 	</select>
 	
 

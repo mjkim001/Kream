@@ -15,11 +15,12 @@
 <script type="text/javascript">
 currentPage = 1;
 admin={};
+notice={};
 temp = 0;
 $(function() {
 	wordvalue = "";
 	noticeList();
-	
+	$('.modal-backdrop').css("z-index", "9999");
 	//search검색  이벤트
 	$(document).on('click','#search', function(){ //search 버튼을 눌렀을때
 		wordvalue =$('#sword').val().trim();
@@ -85,19 +86,26 @@ $(function() {
 	
 	//등록버튼을 눌렀을때 초기화
 	$(document).on('click','#insert',function(){
+		$('#insertModal').modal({backdrop: false});
 		$('.notice_title').val("");
 		$('.notice_content').val("");
 	})
 	
 	//등록버튼을 눌러 입력후 확인 버튼을 눌렀을 경우
 	$(document).on('click','#insertsend',function(){
-		admin.notice_title = $('.notice_title').val();
-		admin.notice_content = $('.notice_content').val();
-		admin.notice_cat = $('.notice_cat option:selected').val();
-		admin.notice_sta = $('.notice_sta option:selected').val();
-		console.log(admin);
+		notice.notice_title = $('.notice_title').val();
+		notice.notice_content = $('.notice_content').val();
+		notice.notice_cat = $('.notice_cat option:selected').val();
+		notice.notice_sta = $('.notice_sta option:selected').val();
+		console.log(notice);
 		
-		noticeInsert(admin);
+		noticeInsert(notice);
+	})
+	
+	
+	
+	$(document).on('click','#updateNoticeform',function(){
+		$('#updateModal').modal({backdrop: false});
 	})
 	
 })

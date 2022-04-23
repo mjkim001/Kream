@@ -31,7 +31,8 @@
 	 <typeAlias alias = "graphVo" type = "kr.or.ddit.kream.vo.GraphVo"/>
 	 <typeAlias alias = "noticeVo" type = "kr.or.ddit.kream.vo.NoticeVo"/>
 	 <typeAlias alias = "brandVo" type = "kr.or.ddit.kream.vo.BrandVo"/>
-	 
+	 <typeAlias alias = "reviewVo" type = "kr.or.ddit.kream.vo.ReviewVo"/>
+	 <typeAlias alias = "boardReplyVo" type = "kr.or.ddit.kream.vo.BoardReplyVo"/>
 	 	 						
 	<!-- DB와의 연결을 처리하는 부분 -->
 	 <!-- db.properties파일 이용하기 -->
@@ -52,15 +53,17 @@
 	<!-- sql문을 처리하는 sqlMap 태그들을 기술한다. -->
 	<!-- <sqlMap resource="경로명/파일명.xml"/> -->
 		
-<!-- 	    <sqlMap resource="kr/or/ddit/kream/mapping/prod.xml"/> -->
-<!-- 		<sqlMap resource="kr/or/ddit/kream/mapping/card.xml"/> -->
-<!-- 		<sqlMap resource="kr/or/ddit/kream/mapping/boardQnA.xml"/>  -->
-<!-- 		<sqlMap resource="kr/or/ddit/kream/mapping/member.xml"/> -->
+	    <sqlMap resource="kr/or/ddit/kream/mapping/prod.xml"/>
+		<sqlMap resource="kr/or/ddit/kream/mapping/card.xml"/>
+		<sqlMap resource="kr/or/ddit/kream/mapping/boardQnA.xml"/> 
+		<sqlMap resource="kr/or/ddit/kream/mapping/member.xml"/>
 		<sqlMap resource="kr/or/ddit/kream/mapping/adminBoard.xml"/>
-<!-- 	    <sqlMap resource="kr/or/ddit/kream/mapping/bid.xml"/> -->
-<!-- 	    <sqlMap resource="kr/or/ddit/kream/mapping/order.xml"/> -->
-<!-- 	    <sqlMap resource="kr/or/ddit/kream/mapping/address.xml"/> -->
+	    <sqlMap resource="kr/or/ddit/kream/mapping/bid.xml"/>
+	    <sqlMap resource="kr/or/ddit/kream/mapping/order.xml"/>
+	    <sqlMap resource="kr/or/ddit/kream/mapping/address.xml"/>
 		<sqlMap resource="kr/or/ddit/kream/mapping/adminNotice.xml"/>
+		<sqlMap resource="kr/or/ddit/kream/mapping/adminQnA.xml"/>
+		<sqlMap resource="kr/or/ddit/kream/mapping/boardNotice.xml"/>
 	    
 </sqlMapConfig>
 

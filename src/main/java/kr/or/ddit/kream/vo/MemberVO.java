@@ -13,6 +13,13 @@ public class MemberVO {
 	private String mem_intro;
 	private String mem_photo;
 	private String authority;
+	private String mem_sns;
+	public String getMem_sns() {
+		return mem_sns;
+	}
+	public void setMem_sns(String mem_sns) {
+		this.mem_sns = mem_sns;
+	}
 	public String getMem_email() {
 		return mem_email;
 	}

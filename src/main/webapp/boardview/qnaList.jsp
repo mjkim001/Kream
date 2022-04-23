@@ -78,6 +78,7 @@ admin={};
 temp = 0;
 reply={};
 board_id="";
+creply=12;
 $(function() {
 	wordvalue = "";
 	typevalue = "";
@@ -169,9 +170,8 @@ $(function() {
 			$('#modifyform').show();
 		}
 		if(actionName=="r_delete"){
-			
-			replyDelete(this);
-			
+			replyDelete(this)
+			$(this).parents('.rcode').remove();
 		}
 		
 	})
@@ -198,14 +198,14 @@ $(function() {
 		//수정입력내용 가져오기 \r \n이 포함되어 있다.
 		modicont = $('#modifyform textarea').val();
 		
-		//환원할 위치 = p2
+		//환원할 위치 = r2
 		vr2 = $('#modifyform').parent();
 		
 		//수정폼을 body로 이동, 감추기
 		$('body').append($('#modifyform'));
 		$('#modifyform').hide();
 		
-		//mobicont 내용을 <br>태그로 바꿔서 p3위치에 출력표시
+		//mobicont 내용을 <br>태그로 바꿔서 r2위치에 출력표시
 		modishow = modicont.replace(/\r/g,"").replace(/\n/g,"<br>");
 		vr2.html(modishow);
 		//db에서 수정 - <cont>, redate

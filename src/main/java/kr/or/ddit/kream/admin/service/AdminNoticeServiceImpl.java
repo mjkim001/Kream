@@ -27,7 +27,7 @@ public class AdminNoticeServiceImpl implements IAdminNoticeService{
 	@Override
 	public int totalCount() {
 		int  count = 0;
-		
+		System.out.println(count);
 		try {
 			count = dao.totalCount();
 		} catch (SQLException e) {
@@ -40,19 +40,18 @@ public class AdminNoticeServiceImpl implements IAdminNoticeService{
 
 
 	@Override
-	public Map<String, Object> getPageInfo(int page, String type, String word) {
+	public Map<String, Object> getPageInfo(int page, String word) {
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		
 		//한페이지당 출력할 글
-		int perlist = 10;
+		int perlist = 5;
 		
 		//한 화면에 츨력할 페이지 
 		int perpage = 5;
 		
 		
 		Map<String, String>  paramap = new HashMap<String, String>();
-		paramap.put("stype", type);
 		paramap.put("sword", word);
 		
 				
@@ -94,5 +93,47 @@ public class AdminNoticeServiceImpl implements IAdminNoticeService{
 		}
 	 
 		return list;
+	}
+	@Override
+	public NoticeVo noticeDetail(String notice) {
+		NoticeVo vo = null;
+		try {
+			vo = dao.noticeDetail(notice);
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return vo;
+	}
+	@Override
+	public int noticeUpdate(NoticeVo vo) {
+		int res = 0;
+		try {
+			res = dao.noticeUpdate(vo);
+		} catch (SQLException  e) {
+			// TODO: handle exception
+		}
+		return res;
+	}
+	@Override
+	public int noticeDelete(String notice) {
+		int res = 0;
+		try {
+			res = dao.noticeDelete(notice);
+		} catch (SQLException  e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return res;
+	}
+	@Override
+	public int noticeInsert(NoticeVo vo) {
+		int res = 0;
+		try {
+			res = dao.noticeInsert(vo);
+		} catch (SQLException  e) {
+			e.printStackTrace();
+		}
+		return res;
 	}
 }

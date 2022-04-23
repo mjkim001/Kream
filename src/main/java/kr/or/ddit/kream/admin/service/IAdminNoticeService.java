@@ -10,7 +10,16 @@ public interface IAdminNoticeService {
 	public int totalCount();
 			 
 	//page정보 구하기 
-	public Map<String , Object> getPageInfo(int page, String type, String word);
+	public Map<String , Object> getPageInfo(int page, String word);
 
 	public List<NoticeVo> selectList(Map<String, Object> map);
+	
+	public NoticeVo noticeDetail(String notice);
+	
+	public int noticeUpdate(NoticeVo vo);
+	
+	public int noticeDelete(String notice);
+	
+	public int noticeInsert(NoticeVo vo);
+
 }

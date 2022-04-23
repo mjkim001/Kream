@@ -20,7 +20,6 @@ $(function() {
 	wordvalue = "";
 	
 	memberList();
-	
 	//search검색  이벤트
 	$('#search').on('click', function(){ //search 버튼을 눌렀을때
 		typevalue= $('#stype option:selected').val().trim(); //체크한 옵션 가져오기
@@ -51,6 +50,14 @@ $(function() {
 			parseInt( $('.pager a').last().text()) + 1;
 		
 		memberList();
+	})
+	
+	$(document).on('click','#insert',function(){
+		$('#insertModal').modal({backdrop: false});
+	})
+	
+	$(document).on('click','#update',function(){
+		$('#updateModal').modal({backdrop: false});
 	})
 	
 	$('.modal-footer').on('click', '.action', function(){
@@ -168,12 +175,14 @@ table{
 /*moadal*/
 .modal{
 	padding-left: 450px;
+	
 }
 .lsize{
 	/*글씨 맞춤 style*/
 	display: inline-block;
 	width: 100px;
 }
+
 
 #btnsearch{
 	border-radius:20%;
@@ -197,8 +206,8 @@ table{
 	  </form>
 	  
 	  <form id="btns">
-	  	<button id="insert" name="insert" type="button" data-toggle="modal" data-target="#insertModal" class="action btn btn-outline-dark">계정추가</button>
-	  	<button id="update" name="update" type="button" data-toggle="modal" data-target="#updateModal" class="action btn btn-outline-dark">계정수정</button>
+	  	<button id="insert" name="insert" type="button" class="action btn btn-outline-dark">계정추가</button>
+	  	<button id="update" name="update" type="button" class="action btn btn-outline-dark">계정수정</button>
 	  	<button id="delete" name="delete" type="button" class="btn btn-outline-dark">계정삭제</button>
 	  </form>
   </nav>
@@ -216,7 +225,7 @@ table{
  
  
  <!-- The Modal //관리자 계정 추가-->
-<div class="modal" id="insertModal">
+<div class="modal fade" id="insertModal">
   <div class="modal-dialog">
     <div class="modal-content">
 

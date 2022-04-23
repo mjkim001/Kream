@@ -12,4 +12,13 @@ public interface IAdminNoticeDao {
 		  
 	//전체 글갯수 가져오기 
 	public int totalCount() throws SQLException;
+	
+	public NoticeVo noticeDetail(String notice) throws SQLException; 
+	
+	public int noticeUpdate(NoticeVo vo) throws SQLException;
+	
+	public int noticeDelete(String notice) throws SQLException;
+	
+	public int noticeInsert(NoticeVo vo) throws SQLException;
+	
 }

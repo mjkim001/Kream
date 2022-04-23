@@ -27,8 +27,7 @@ import kr.or.ddit.kream.vo.MemberVO;
 public class AdminBoard extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 
 		// 1. 요청시 전송데이터 받기- page번호 , stype(option), sword(검색창에 입력한 text)

@@ -7,6 +7,14 @@ public class BoardQnAVo {
 	private String board_content; //게시글 내용
 	private String board_date; //게시글 작성 날짜
 	
+	private String creply; //댓글 여부
+	
+	public String getCreply() {
+		return creply;
+	}
+	public void setCreply(String creply) {
+		this.creply = creply;
+	}
 	public String getBoard_id() {
 		return board_id;
 	}
@@ -37,4 +45,10 @@ public class BoardQnAVo {
 	public void setBoard_date(String board_date) {
 		this.board_date = board_date;
 	}
+	@Override
+	public String toString() {
+		return "BoardQnAVo [board_id=" + board_id + ", mem_email=" + mem_email + ", board_title=" + board_title
+				+ ", board_content=" + board_content + ", board_date=" + board_date + "]";
+	}
+	
 }

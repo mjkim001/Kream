@@ -31,12 +31,43 @@ public class AdminNoticeDaoImpl implements IAdminNoticeDao{
 	@Override
 	public int totalCount() throws SQLException {
 		// TODO Auto-generated method stub
-		return (int)client.queryForObject("수정");
+		return (int)client.queryForObject("adminNotice.totalCount");
 	}
 	
 	@Override
 	public List<NoticeVo> selectList(Map<String, Object> map) throws SQLException {
 		// TODO Auto-generated method stub
-		return  client.queryForList("수정", map);
+		return  client.queryForList("adminNotice.selectList", map);
+	}
+
+	@Override
+	public NoticeVo noticeDetail(String notice) throws SQLException {
+		// TODO Auto-generated method stub
+		NoticeVo vo = (NoticeVo)client.queryForObject("adminNotice.noticeDetail", notice);
+		
+		
+		System.out.println(vo.getNotice_title()+"-------------");
+		
+		return (NoticeVo)client.queryForObject("adminNotice.noticeDetail", notice);
+	}
+
+	@Override
+	public int noticeUpdate(NoticeVo vo) throws SQLException {
+		// TODO Auto-generated method stub
+		return client.update("adminNotice.noticeUpdate",vo);
+	}
+
+	@Override
+	public int noticeDelete(String notice) throws SQLException {
+		// TODO Auto-generated method stub
+		return client.delete("adminNotice.noticeDelete",notice);
+	}
+
+	@Override
+	public int noticeInsert(NoticeVo vo) throws SQLException {
+		Object obj = client.insert("adminNotice.noticeInsert", vo);
+		if(obj == null) return 1;
+		else return 0;
+		
 	}
 }
