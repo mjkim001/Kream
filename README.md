@@ -64,11 +64,11 @@
     <td><img src="https://avatars.githubusercontent.com/morning123456" style="width:50px;"></td>
   </tr>
   <tr>
-    <td><a href="https://github.com/KDJ97">강동주</a></td>
-    <td><a href="https://github.com/tayofan">곽성상</a></td>
-    <td><a href="https://github.com/novelop">노혜지</a></td>
-    <td><a href="https://github.com/mjkim001">김민지</a></td>
-    <td><a href="https://github.com/morning123456">오지현</a></td>
+    <td><a href="https://github.com/KDJ97">KDJ97</a></td>
+    <td><a href="https://github.com/tayofan">tayofan</a></td>
+    <td><a href="https://github.com/novelop">novelop</a></td>
+    <td><a href="https://github.com/mjkim001">mjkim001</a></td>
+    <td><a href="https://github.com/morning123456">morning123456</a></td>
   </tr>
 </table>
 
