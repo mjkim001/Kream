@@ -25,16 +25,21 @@ public class AdminNoticeInsert extends HttpServlet {
 		
 		NoticeVo  vo = new NoticeVo();
 		
-		try {
-			BeanUtils.populate(vo, request.getParameterMap());
-		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (InvocationTargetException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try {
+//			BeanUtils.populate(vo, request.getParameterMap());
+//		} catch (IllegalAccessException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (InvocationTargetException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		
 		
+		vo.setNotice_title(request.getParameter("notice_title"));
+		vo.setNotice_content(request.getParameter("notice_content"));
+		vo.setNotice_sta(request.getParameter("notice_sta"));
+		vo.setNotice_cat(request.getParameter("notice_cat"));
 		
 		IAdminNoticeService  service = AdminNoticeServiceImpl.getInstance();
 		
