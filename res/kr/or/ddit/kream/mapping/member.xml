@@ -10,6 +10,30 @@
 		values(#mem_email#,#mem_pass#,#mem_name#,#mem_sns#)
 	</insert>
 	
+	<update id="updateAcc" parameterClass="memberVo">
+		update member set
+		 mem_bank = #mem_bank#,
+		 mem_acc = #mem_acc#
+		where mem_email = #mem_email#  
+	</update>
+	
+	<update id="updateMember" parameterClass="map">
+		update member set
+		 $para$ = #value#
+		where mem_email = #mem_email#  
+	</update>
+	
+	<select id="findEmail" parameterClass='string' resultClass="string">
+		select mem_email from member
+		 where mem_name = #data#
+	</select>
+	
+	<select id="findPass" parameterClass='memberVo' resultClass="string">
+		select mem_pass from member
+		 where mem_name = #mem_name#
+		   and mem_email = #mem_email#
+	</select>
+	
 	<select id="getMember" parameterClass='memberVo' resultClass="memberVo">
 		select * from member
 		where mem_email = #mem_email#
@@ -104,6 +128,12 @@
 			zip_code = #zip_code#,
 			addr2 = #addr2#
 			where mem_email = #mem_email#
+	</update>
+	
+	<update id="updateProfile" parameterClass="memberVo">
+		update member set
+		   mem_photo = #mem_photo#
+		  where mem_email = #mem_email# 
 	</update>
 	
 	<insert id="insertaddr" parameterClass="string">

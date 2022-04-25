@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
+<!--adminNotice-->
 <!DOCTYPE sqlMap
 	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
 	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
@@ -22,7 +22,7 @@
 	    select rownum as rnum, B.*  from (
 	         select * from notice 
 	         <include refid="search"/>
-	         ORDER BY notice DESC ) B
+	         ORDER BY to_number(notice) DESC ) B
 	 <![CDATA[
 	     where rownum <= #end#) A 
 	 where A.rnum >=#start#
@@ -55,7 +55,7 @@
    
    <insert id="noticeInsert" parameterClass="noticeVo">
    insert into notice(NOTICE,NOTICE_TITLE,NOTICE_CONTENT,NOTICE_DATE,NOTICE_CAT,NOTICE_STA)
-   VALUES ((SELECT NVL(MAX(ROWNUM)+1,0) FROM notice), #notice_title#,#notice_content#,sysdate,#notice_cat#,#notice_sta#)
+   VALUES ((SELECT NVL(MAX(to_number(notice)), 0)+1 FROM notice), #notice_title#,#notice_content#,sysdate,#notice_cat#,#notice_sta#)
    </insert>
    
 </sqlMap>

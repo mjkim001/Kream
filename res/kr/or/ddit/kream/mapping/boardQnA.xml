@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
+<!--boardQnA-->
 <!DOCTYPE sqlMap
 	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
 	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
@@ -30,7 +30,7 @@
              	 from ( select * 
              	 		  from board_qna 
              		    <include refid="search"/>
-             		    order by board_id desc ) B
+             		    order by to_number(board_id) desc ) B
 		<![CDATA[
 	       	    where rownum <= #end#) A 
 	 	where A.rnum >= #start#
@@ -67,7 +67,7 @@
    
    <insert id="qnaInsert" parameterClass="boardQnAVo">
    insert into BOARD_QNA(BOARD_ID,MEM_EMAIL,BOARD_TITLE,BOARD_CONTENT,BOARD_DATE)
-   VALUES ((SELECT NVL(MAX(ROWNUM)+1,0) FROM BOARD_QNA),#mem_email#, #board_title#,#board_content#,sysdate)
+   VALUES ((SELECT NVL(MAX(to_number(BOARD_ID)),0)+1 FROM BOARD_QNA),#mem_email#, #board_title#,#board_content#,sysdate)
    </insert>
    
    
