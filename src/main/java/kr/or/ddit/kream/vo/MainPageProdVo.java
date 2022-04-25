@@ -6,7 +6,14 @@ public class MainPageProdVo {
 	private String prod_name;
 	private String brand_name;
 	private String photo_path;
+	private int prod_resell;
 	
+	public int getProd_resell() {
+		return prod_resell;
+	}
+	public void setProd_resell(int prod_resell) {
+		this.prod_resell = prod_resell;
+	}
 	public String getProd_id() {
 		return prod_id;
 	}

@@ -8,6 +8,7 @@ public class MyBuyingListVO {
 	private String bid_state;
 	private String bid_price;
 	private String photo_path;
+	
 	public String getProd_id() {
 		return prod_id;
 	}

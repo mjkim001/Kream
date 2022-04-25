@@ -1,20 +1,13 @@
 package kr.or.ddit.kream.vo;
 
 public class AddressVo {
-	private String addr_id;
 	private String addr1;
 	private String name;
 	private String phone_num;
 	private String zip_code;
 	private String addr2;
 	private String mem_email;
-	
-	public String getAddr_id() {
-		return addr_id;
-	}
-	public void setAddr_id(String addr_id) {
-		this.addr_id = addr_id;
-	}
+
 	public String getAddr1() {
 		return addr1;
 	}

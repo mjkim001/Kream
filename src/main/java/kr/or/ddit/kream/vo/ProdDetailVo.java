@@ -8,9 +8,15 @@ public class ProdDetailVo {
 	private long org_price;
 	private String photo_path;
 	private String brand_name;
-	
-	//Ãß°¡
+	private String prod_launch;
 	private String size_name;
+	
+	public String getProd_launch() {
+		return prod_launch;
+	}
+	public void setProd_launch(String prod_launch) {
+		this.prod_launch = prod_launch;
+	}
 	
 	public String getSize_name() {
 		return size_name;

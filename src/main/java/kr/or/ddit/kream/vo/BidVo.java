@@ -1,116 +1,131 @@
 package kr.or.ddit.kream.vo;
 
-import java.util.Date;
+
 
 public class BidVo {
 
-	private String bid_id;        //ÀÔÂû ÄÚµå
-	private Date bid_date;        //ÀÔÂû ³¯Â¥
-	private int bid_price;        //ÀÔÂû °¡°Ý
-	private String bid_position;  //ÀÔÂû Æ÷Áö¼Ç
-	private String mem_email;     //ÀÔÂûÀÚ
-	private String size_id;       //»çÀÌÁî ÄÚµå
+	private String bid_id;        //ï¿½ï¿½ï¿½ï¿½ ï¿½Úµï¿½
+	private String bid_date;        //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Â¥
+	private int bid_price;        //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+	private String bid_position;  //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private String mem_email;     //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private String size_id;       //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Úµï¿½
 
-	private String prod_id;       //prod_size Å×ÀÌºíÀÇ »óÇ°ÄÚµå
-	private String size_name;     //prod_size Å×ÀÌºíÀÇ Ä¡¼ö
+	private String prod_id;       //prod_size ï¿½ï¿½ï¿½Ìºï¿½ï¿½ï¿½ ï¿½ï¿½Ç°ï¿½Úµï¿½
+	private String size_name;     //prod_size ï¿½ï¿½ï¿½Ìºï¿½ï¿½ï¿½ Ä¡ï¿½ï¿½
 	
-	// ÇýÁö Ãß°¡ 
-	private String Temp_price;  // ÀÀÂû °¡°Ý 
-	private String Temp_date;   // ÀÀÂû ÀÏÀÚ 
-	private String Bid_state;   // ÀÔÂû »óÅÂ 
-	private String Point_yn;    // Æ÷ÀÎÆ® »ç¿ë ¿©ºÎ 
-	private int point;          // »ç¿ëÇÒ Æ÷ÀÎÆ® ±Ý¾×
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½ 
+	private String temp_price;  // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 
+	private String temp_date;   // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 
+	private String bid_state;   // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 
+	private int point;          // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Ý¾ï¿½
 	
-	private int order_price; // ÃÖÁ¾°áÁ¦°¡°Ý 
+	private int order_price; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
+
+	public String getBid_id() {
+		return bid_id;
+	}
+
+	public void setBid_id(String bid_id) {
+		this.bid_id = bid_id;
+	}
+
+	public String getBid_date() {
+		return bid_date;
+	}
+
+	public void setBid_date(String bid_date) {
+		this.bid_date = bid_date;
+	}
+
+	public int getBid_price() {
+		return bid_price;
+	}
+
+	public void setBid_price(int bid_price) {
+		this.bid_price = bid_price;
+	}
+
+	public String getBid_position() {
+		return bid_position;
+	}
+
+	public void setBid_position(String bid_position) {
+		this.bid_position = bid_position;
+	}
+
+	public String getMem_email() {
+		return mem_email;
+	}
+
+	public void setMem_email(String mem_email) {
+		this.mem_email = mem_email;
+	}
+
+	public String getSize_id() {
+		return size_id;
+	}
+
+	public void setSize_id(String size_id) {
+		this.size_id = size_id;
+	}
+
+	public String getProd_id() {
+		return prod_id;
+	}
+
+	public void setProd_id(String prod_id) {
+		this.prod_id = prod_id;
+	}
 
 	public String getSize_name() {
 		return size_name;
 	}
+
 	public void setSize_name(String size_name) {
 		this.size_name = size_name;
 	}
-	public String getProd_id() {
-		return prod_id;
-	}
-	public void setProd_id(String prod_id) {
-		this.prod_id = prod_id;
-	}
-	public String getBid_id() {
-		return bid_id;
-	}
-	public void setBid_id(String bid_id) {
-		this.bid_id = bid_id;
-	}
-	public Date getBid_date() {
-		return bid_date;
-	}
-	public void setBid_date(Date bid_date) {
-		this.bid_date = bid_date;
-	}
-	public int getBid_price() {
-		return bid_price;
-	}
-	public void setBid_price(int bid_price) {
-		this.bid_price = bid_price;
-	}
-	public String getBid_position() {
-		return bid_position;
-	}
-	public void setBid_position(String bid_position) {
-		this.bid_position = bid_position;
-	}
-	public String getMem_email() {
-		return mem_email;
-	}
-	public void setMem_email(String mem_email) {
-		this.mem_email = mem_email;
-	}
-	public String getSize_id() {
-		return size_id;
-	}
-	public void setSize_id(String size_id) {
-		this.size_id = size_id;
-	}
+
 	public String getTemp_price() {
-		return Temp_price;
+		return temp_price;
 	}
+
 	public void setTemp_price(String temp_price) {
-		Temp_price = temp_price;
+		this.temp_price = temp_price;
 	}
+
 	public String getTemp_date() {
-		return Temp_date;
+		return temp_date;
 	}
+
 	public void setTemp_date(String temp_date) {
-		Temp_date = temp_date;
+		this.temp_date = temp_date;
 	}
+
 	public String getBid_state() {
-		return Bid_state;
+		return bid_state;
 	}
+
 	public void setBid_state(String bid_state) {
-		Bid_state = bid_state;
+		this.bid_state = bid_state;
 	}
-	public String getPoint_yn() {
-		return Point_yn;
-	}
-	public void setPoint_yn(String point_yn) {
-		Point_yn = point_yn;
-	}
+
 	public int getPoint() {
 		return point;
 	}
+
 	public void setPoint(int point) {
 		this.point = point;
 	}
+
 	public int getOrder_price() {
 		return order_price;
 	}
+
 	public void setOrder_price(int order_price) {
 		this.order_price = order_price;
 	}
-	
-	
-	
-	
+
 	
 	
 	
